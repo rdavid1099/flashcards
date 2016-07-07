@@ -1,58 +1,12 @@
+require_relative 'card_generator'
 require 'pry'
+
 class Card
   attr_reader :question, :answer, :hint
   def initialize(question, answer, hint)
     @question = question
     @answer = answer
     @hint = hint
-  end
-end
-
-class CardGenerator
-  attr_reader :file_name
-
-  def initialize(file_name)
-    @file_name = file_name
-  end
-
-  def cards
-    cards_in_file = File.read(file_name).split(/\n/)
-    cards_in_file.map do |card|
-      card_data = card.split(';')
-      Card.new(card_data[0],card_data[1],card_data[2])
-    end
-  end
-end
-
-class UploadSavedDeck
-  def read_file
-    print "Enter the name of the deck file now, or enter a new name to create a new deck.\n> "
-    filename = gets.downcase.chomp
-    validate_filename(filename)
-    if File.exist?(filename)
-      CardGenerator.new(filename).cards if File.exist?(filename)
-    else
-      print "#{filename} does not yet exist. Create new deck #{filename}? (Y or N)\n> "
-      response = gets.chomp.upcase
-      if response == 'Y'
-        CreateNewDeck.new.create_deck # Pass through filename
-      else
-        puts "No problem. Let's try again."
-        read_file
-      end
-    end
-  end
-
-  def validate_filename(filename)
-    name_and_extension = filename.split('.')
-    binding.pry
-    return filename += ".txt" if name_and_extension.count == 1
-    if name_and_extension[1] == "txt"
-      filename
-    else
-      puts "Sorry. Only .txt files are supported at this time.\nPlease try again."
-      read_file
-    end
   end
 end
 
