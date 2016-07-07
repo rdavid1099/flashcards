@@ -1,0 +1,3 @@
+What is the name of Denver's NFL team?;Broncos;Super Bowl 50 Champs
+Where is the show South Park based?;Colorado;The rocky mountain state
+What is the name of the @variables in Ruby?;Instance Variables;They may be accessed in a complete instance.

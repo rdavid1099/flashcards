@@ -1,0 +1,4 @@
+What is 5 + 5?;10;You should know this.
+What is Rachel's favorite animal?;red panda;They are black and white and BLANK all over.
+What is Mike's middle name?;nobody knows;Nobody knows.
+What cardboard cutout lives at Turing?;Justin bieber;Baby, baby, baby, oh.
