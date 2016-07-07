@@ -1,3 +1,4 @@
+require 'pry'
 class Card
   attr_reader :question, :answer, :hint
   def initialize(question, answer, hint)
@@ -8,31 +9,53 @@ class Card
 end
 
 class CardGenerator
+  attr_reader :file_name
+
   def initialize(file_name)
     @file_name = file_name
   end
+
   def cards
-    cards_in_file = File.read(@file_name).split(/\n/)
-    cards_in_file.map {|card| Card.new(card.split(';')[0],card.split(';')[1],card.split(';')[2])}
+    cards_in_file = File.read(file_name).split(/\n/)
+    cards_in_file.map do |card|
+      card_data = card.split(';')
+      Card.new(card_data[0],card_data[1],card_data[2])
+    end
   end
 end
 
 class UploadSavedDeck
-  def initialize
-    @filename = String.new
-  end
   def read_file
-    while @filename != '0'
-      print "Enter the name of the deck file now.\n> "
-      @filename = gets.downcase.chomp
-      @filename += ".txt" if @filename[-4] != '.' && @filename != '0' # Adds the .txt extension if the user did not type it in.
-      return CardGenerator.new(@filename).cards if File.exist?(@filename) # Save the array of the cards in the text file to local_cards
-      return CreateNewDeck.new.create_deck if @filename == '0'
-      puts "The file name you entered does not exist.  Please type the correct file name or 0 to create a deck."
-      # File name does not exist in the relative directory.  Prompts user to re-enter the file name or type 0 to create a new deck
+    print "Enter the name of the deck file now, or enter a new name to create a new deck.\n> "
+    filename = gets.downcase.chomp
+    validate_filename(filename)
+    if File.exist?(filename)
+      CardGenerator.new(filename).cards if File.exist?(filename)
+    else
+      print "#{filename} does not yet exist. Create new deck #{filename}? (Y or N)\n> "
+      response = gets.chomp.upcase
+      if response == 'Y'
+        CreateNewDeck.new.create_deck # Pass through filename
+      else
+        puts "No problem. Let's try again."
+        read_file
+      end
+    end
+  end
+
+  def validate_filename(filename)
+    name_and_extension = filename.split('.')
+    binding.pry
+    return filename += ".txt" if name_and_extension.count == 1
+    if name_and_extension[1] == "txt"
+      filename
+    else
+      puts "Sorry. Only .txt files are supported at this time.\nPlease try again."
+      read_file
     end
   end
 end
+
 class CreateNewDeck
   def initialize
     @raw_string_of_cards = String.new  # String that can be saved to a text file if user wants to save the questions they entered

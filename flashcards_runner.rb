@@ -1,8 +1,7 @@
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/cards'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/guess'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/deck'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/round'
-require 'pry'
+require './lib/cards'
+require './lib/guess'
+require './lib/deck'
+require './lib/round'
 
 puts "Welcome To RyCards... Where flashcards are our business."
 user_deck = String.new

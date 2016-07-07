@@ -7,7 +7,7 @@ class Round
     @deck = deck
     @guesses = []
     @extra_practice = nil
-    #@deck.cards == nil ? terminate : start
+    @deck.cards == nil ? terminate : start
   end
   def start
     loop do
