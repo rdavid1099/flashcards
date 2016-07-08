@@ -5,7 +5,7 @@ class Guess
     @card = card
   end
   def correct?
-    @response.downcase == card.answer.downcase # .downcase ensures that answers are NOT case sensitive
+    @response.downcase == card.answer.downcase
   end
   def feedback
     return "Correct!" if correct?
