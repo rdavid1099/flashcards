@@ -1,4 +1,5 @@
 require_relative 'create_new_deck_file'
+require_relative 'cards'
 
 class CreateNewDeck
   def initialize
