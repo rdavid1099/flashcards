@@ -36,7 +36,7 @@ class CreateNewDeck
 
   def save_new_deck?
     return false if @new_deck_of_cards.length == 0
-    print "Would you like to save your new deck of cards?\n> "
+    print "Would you like to save your new deck of cards (Y/N)?\n> "
     save_deck = gets.downcase.chomp
     return true if save_deck == 'y'
     return false if save_deck == 'n'

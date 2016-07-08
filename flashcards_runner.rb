@@ -1,5 +1,5 @@
-require './lib/cards'
-require './lib/guess'
+require './lib/create_new_deck'
+require './lib/upload_saved_deck'
 require './lib/deck'
 require './lib/round'
 
@@ -10,12 +10,11 @@ until user_deck == 'y' || user_deck == 'n'
   user_deck = gets.downcase.chomp
   puts "\nYou must enter either Y or N.\n" if user_deck != 'y' && user_deck != 'n'
 end
-# User uploads a deck text file from the directory
-local_cards = UploadSavedDeck.new.read_file if user_deck == 'y'
-# Below is the loop that allows the user to make a new deck of flashcards
-local_cards = CreateNewDeck.new.create_deck if user_deck == 'n'
-# Option to save new deck cards to directory so they can be used in the future
+if user_deck == 'y'
+  local_cards = UploadSavedDeck.new.read_file
+else
+  local_cards = CreateNewDeck.new.create_deck
+end
 puts "\nThank you.  We are now creating and shuffling your deck of #{local_cards.length} cards." if local_cards.length > 0
 deck = Deck.new(local_cards)
 round = Round.new(deck)
-#round.start
