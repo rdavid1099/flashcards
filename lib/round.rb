@@ -2,8 +2,8 @@ require_relative 'guess'
 require 'date'
 
 class Round
-  attr_reader :deck
-  attr_reader :guesses
+  attr_reader :deck,
+              :guesses
 
   def initialize(deck)
     @deck = deck
@@ -74,11 +74,11 @@ class Round
   end
 
   def current_card
-    return @deck.cards[0]
+    @deck.cards[0]
   end
 
   def previous_card
-    return @guesses[-1].card
+    @guesses[-1].card
   end
 
   def record_guess(user_guess)
