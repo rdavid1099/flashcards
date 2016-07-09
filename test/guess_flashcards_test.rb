@@ -5,12 +5,13 @@ require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/guess'
 
 class FlashcardsGuessTest < Minitest::Test
   def test_guess_exist
-    skip
     guess = Guess.new
+
+    assert_instance_of Guess, guess
   end
   def test_guess_can_pass_through_response
-    skip
-    guess = Guess.new("Denver")
+    card = "dummy"
+    guess = Guess.new("Denver", card)
     assert_equal "Denver", guess.response
   end
   def test_guess_can_pass_through_response_and_question

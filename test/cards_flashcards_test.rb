@@ -1,9 +1,16 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/cards'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/guess'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/deck'
-require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/round'
+require './lib/cards'
+require './lib/guess'
+require './lib/deck'
+require './lib/round'
+require './lib/card_generator'
+#
+# require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/cards'
+# require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/guess'
+# require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/deck'
+# require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/round'
+# require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/'
 
 class FlashcardsCardsTest < Minitest::Test
   def test_cards_exist

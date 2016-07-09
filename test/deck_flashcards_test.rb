@@ -5,10 +5,6 @@ require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/deck'
 require '/Users/RyanWorkman/turing/Module1/Projects/flashcards/lib/guess'
 
 class FlashcardsDeckTest < Minitest::Test
-  def test_decks_exist
-    skip
-    deck = Deck.new
-  end
   def test_you_can_add_one_card_to_the_deck
     card_1 = Card.new("What is the capital of Colorado?","Denver","It's the Mile High City.")
     deck = Deck.new([card_1])
